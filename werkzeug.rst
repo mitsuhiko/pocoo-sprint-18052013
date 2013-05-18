@@ -64,6 +64,38 @@ The easiest way out of this is to backport Py3's ``urllib.parse`` to run on both
 
 The problem is that the behavior between Werkzeug's wrapper functions and ``urllib.parse`` seem to differ in subtle and hard to spot ways, which still have fatal consequences. At least that was my (untitaker) impression when i tinkered around with it. @RonnyPfannschmidt said there surely is "something obvious we're missing". Probably a re-thinking on how URLs and URIs are represented internally is appropriate at this point.
 
+Pending Changes
+---------------
 
+These are things that need to be done:
 
-(more to come)
+Headers
+````````
+
+1.  Headers and EnvironHeaders are internally now always dealing with
+    unicode.  The strings they contain are strictly limited to latin1
+    but only on output is this checked.
+2.  We remove `to_list` and add `to_wsgi_list` that takes no arguments
+    and returns unicode on 3.x for the server to encode and on 2.x we
+    do the encode in the datastructure.
+3.  Remove `Headers.linked`, instead have a subclass of `Headers` that
+    is a `LinkedHeaders` which does the encode/decode as necessary on
+    every single access.
+
+URIs / IRIs
+```````````
+
+1.  All URIs are represented as native string in their canonical form.
+2.  All IRIs are always represented as unicode strings.
+3.  All functions also accept bytes on input (both IRI and URI)
+4.  URI->IRI->IRI->IRI needs to be idempotent
+5.  we need to add URI/IRI parsing and manipulation functions that work
+    regardless of the protocol and string type and return URI/IRI objects
+    (to replace the ill fated urlparse.urlparse / urlparse.urljoin)
+
+Stream Handlers
+```````````````
+
+All stream objects should support unicode and bytes.  If auto detection is
+impossible we need to have different classes for them (StringStream and
+BytesStream etc.).
