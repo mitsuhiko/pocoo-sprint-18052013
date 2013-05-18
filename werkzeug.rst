@@ -5,8 +5,7 @@ General
 
 This text aims to document the ***official*** ongoing process of porting Werkzeug_ to Python 3. The primary repository for this is located at `RonnyPfannschmidt/werkzeug`_, the following branches are relevant to the port:
 
-- ``python3-runtests`` -- as the name implies, used to contain the progress of making the tests run (which is not the same as pass) on Python 3. Now that the testrunner is ported, this branch serves as the master branch where all other branches eventually get merged into, the name stuck with us.
-- ``python3-urllib`` -- this branch contains the progress of porting ``urls.py``
+`python3-urllib` contains the most recent commits.
 
 The port is supposed to only support Py3.3+ and Py2.7+ for now, so we can use ``u""`` and ``b""`` for literals for both 2 and 3. See `PEP 414`_.
 
