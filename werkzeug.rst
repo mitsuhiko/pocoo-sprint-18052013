@@ -1,6 +1,7 @@
 Sprint notes: https://gist.github.com/mitsuhiko/5583127
 
-## General
+General
+=======
 
 This text aims to document the ***official*** ongoing process of porting [Werkzeug](http://werkzeug.pocoo.org) to Python 3. The primary repository for this is located at [RonnyPfannschmidt/werkzeug](https://github.com/RonnyPfannschmidt/werkzeug), the following branches are relevant to the port:
 
@@ -17,7 +18,8 @@ It's hard to argue against something that is already working in practice. Yet we
 A validation of this idea is that Jinja will have to be ported for a second time, because 2to3 turned out to be an impractical solution. That's why we think it'd be a good idea to get it right the first time.
 
 
-## gotchas
+gotchas
+=======
 
   - Just "casting" a bytestring to unicode with ``six.text_type(...)`` won't work.
 
@@ -40,17 +42,21 @@ A validation of this idea is that Jinja will have to be ported for a second time
 
     In ``werkzeug._urlparse`` there's an undocumented function called ``_iter_bytestring``, if it turns out to be needed in other modules feel free to move it to ``_compat``.
 
-## Submodules and -packages
+Submodules and -packages
+========================
 
-### _compat.py
+_compat.py
+----------
 
 This module contains common Python 3 helperfunctions and -classes that are not included in six, as well as many try-except statements for importing. It's only sensible to move something into ``_compat`` if is used by more than one module.
 
-### datastructures.py
+datastructures.py
+-----------------
 
   - To create an iterating API similar to the native dicts of Py2 and Py3 (for ``MultiDict`` and friends) there's a class decorator called ``native_itermethods``. See https://gist.github.com/untitaker/5389383 for an example.
 
-### urls.py
+urls.py
+-------
 
 ``werkzeug.urls`` provides several wrapper functions for Python 2 urlparse (such as ``_(un)quote``, ``safe_urlsplit``), whose main purpose is to work around the behavior of the Py2 stdlib and its lack of unicode support. While this is already a somewhat inconvenient situation, it gets even more complicated because the Py3 ``urllib.parse`` actually does handle unicode properly. In other words, the mentioned wrapper functions are now wrapping two libraries with completely different behavior.
 
