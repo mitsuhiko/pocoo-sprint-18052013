@@ -14,3 +14,4 @@ Add yourself in a pull request if you participate:
 - Thomas Waldmann, @ThomasJWaldmann, github/ThomasWaldmann, freenode/ThomasWaldmann
 - Daniel Neuhäuser, @DasIch, github/DasIch, freenode/DasIch
 - Mathias Köhler, @interru, github/interru, freenode/interru
+- Sharoon Thomas, @sharoonthomas, github/sharoonthomas, freenode/sharoonthomas
