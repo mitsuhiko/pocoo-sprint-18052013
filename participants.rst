@@ -9,3 +9,4 @@ Add yourself in a pull request if you participate:
 - Markus Unterwaditzer, @untitaker, github/untitaker, freenode/untitaker
 - Pascal Hartig, @passy, github/passy, freenode/passy
 - Alex Morega, @mgax, github/mgax, freenode/mgax
+- Hsiaoming Yang, @lepture, github/lepture freenode/lepture
