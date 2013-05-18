@@ -3,15 +3,20 @@ Sprint notes: https://gist.github.com/mitsuhiko/5583127
 General
 =======
 
-This text aims to document the ***official*** ongoing process of porting [Werkzeug](http://werkzeug.pocoo.org) to Python 3. The primary repository for this is located at [RonnyPfannschmidt/werkzeug](https://github.com/RonnyPfannschmidt/werkzeug), the following branches are relevant to the port:
+This text aims to document the ***official*** ongoing process of porting Werkzeug_ to Python 3. The primary repository for this is located at `RonnyPfannschmidt/werkzeug`_, the following branches are relevant to the port:
 
-  - ``python3-runtests`` -- as the name implies, used to contain the progress of making the tests run (which is not the same as pass) on Python 3. Now that the testrunner is ported, this branch serves as the master branch where all other branches eventually get merged into, the name stuck with us.
-  - ``python3-urllib`` -- this branch contains the progress of porting ``urls.py``
+- ``python3-runtests`` -- as the name implies, used to contain the progress of making the tests run (which is not the same as pass) on Python 3. Now that the testrunner is ported, this branch serves as the master branch where all other branches eventually get merged into, the name stuck with us.
+- ``python3-urllib`` -- this branch contains the progress of porting ``urls.py``
+
+The port is supposed to only support Py3.3+ and Py2.7+ for now, so we can use ``u""`` and ``b""`` for literals for both 2 and 3. See `PEP 414`_.
+
+.. _Werkzeug: http://werkzeug.pocoo.org/
+.. _RonnyPfannschmidt/werkzeug: https://github.com/RonnyPfannschmidt/werkzeug
+.. _PEP 414: http://www.python.org/dev/peps/pep-0414/
 
 
-The port is supposed to only support Py3.3+ and Py2.7+ for now, so we can use ``u""`` and ``b""`` for literals for both 2 and 3. See [PEP 414](http://www.python.org/dev/peps/pep-0414/).
-
-### Why another one? There are already finished ones out there!
+Why another one? There are already finished ones out there!
+-----------------------------------------------------------
 
 It's hard to argue against something that is already working in practice. Yet we already found some parts of Werkzeug which should, in our opinion, be rewritten more radically (with API breakage), in order to adapt to the changes in Python 3. That surely means this port is going to take longer to finish, but that doesn't bother us.
 
@@ -21,26 +26,22 @@ A validation of this idea is that Jinja will have to be ported for a second time
 gotchas
 =======
 
-  - Just "casting" a bytestring to unicode with ``six.text_type(...)`` won't work.
+- Just "casting" a bytestring to unicode with ``six.text_type(...)`` won't work.
 
-    ```python
-    >>> str(b'foobar')  # gives us the repr of the bytestring!
-    "b'foobar'"
-    ```
+  >>> str(b'foobar')  # gives us the repr of the bytestring!
+  "b'foobar'"
 
-  - The ``bytes`` type in Python 3 behaves completely different than the ``bytes`` (`` = str``) in Python 2.
+- The ``bytes`` type in Python 3 behaves completely different than the ``bytes`` (`` = str``) in Python 2.
 
-    For example, iteration:
+  For example, iteration:
 
-    ```python
-    >>> list(b'foobar')  # Python 2
-    ['f', 'o', 'o', 'b', 'a', 'r']
+  >>> list(b'foobar')  # Python 2
+  ['f', 'o', 'o', 'b', 'a', 'r']
 
-    >>> list(b'foobar')  # Python 3
-    [102, 111, 111, 98, 97, 114]
-    ```
+  >>> list(b'foobar')  # Python 3
+  [102, 111, 111, 98, 97, 114]
 
-    In ``werkzeug._urlparse`` there's an undocumented function called ``_iter_bytestring``, if it turns out to be needed in other modules feel free to move it to ``_compat``.
+  In ``werkzeug._urlparse`` there's an undocumented function called ``_iter_bytestring``, if it turns out to be needed in other modules feel free to move it to ``_compat``.
 
 Submodules and -packages
 ========================
@@ -53,7 +54,7 @@ This module contains common Python 3 helperfunctions and -classes that are not i
 datastructures.py
 -----------------
 
-  - To create an iterating API similar to the native dicts of Py2 and Py3 (for ``MultiDict`` and friends) there's a class decorator called ``native_itermethods``. See https://gist.github.com/untitaker/5389383 for an example.
+- To create an iterating API similar to the native dicts of Py2 and Py3 (for ``MultiDict`` and friends) there's a class decorator called ``native_itermethods``. See https://gist.github.com/untitaker/5389383 for an example.
 
 urls.py
 -------
