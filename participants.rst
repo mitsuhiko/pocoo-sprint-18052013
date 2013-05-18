@@ -11,3 +11,4 @@ Add yourself in a pull request if you participate:
 - Alex Morega, @mgax, github/mgax, freenode/mgax
 - Hong Minhee, @hongminhee, github/dahlia, freenode/hongminhee
 - Hsiaoming Yang, @lepture, github/lepture freenode/lepture
+- Thomas Waldmann, @ThomasJWaldmann, github/ThomasWaldmann, freenode/ThomasWaldmann
