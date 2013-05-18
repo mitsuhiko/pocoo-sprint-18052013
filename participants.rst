@@ -8,3 +8,4 @@ Add yourself in a pull request if you participate:
 - Goran Peretin, @gperetin, github/gperetin, freenode/gperetin
 - Markus Unterwaditzer, @untitaker, github/untitaker, freenode/untitaker
 - Pascal Hartig, @passy, github/passy, freenode/passy
+- Alex Morega, @mgax, github/mgax, freenode/mgax
