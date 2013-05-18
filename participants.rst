@@ -10,3 +10,4 @@ Add yourself in a pull request if you participate:
 - Pascal Hartig, @passy, github/passy, freenode/passy
 - Alex Morega, @mgax, github/mgax, freenode/mgax
 - Hong Minhee, @hongminhee, github/dahlia, freenode/hongminhee
+- Hsiaoming Yang, @lepture, github/lepture freenode/lepture
