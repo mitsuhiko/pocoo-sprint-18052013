@@ -12,3 +12,4 @@ Add yourself in a pull request if you participate:
 - Hong Minhee, @hongminhee, github/dahlia, freenode/hongminhee
 - Hsiaoming Yang, @lepture, github/lepture freenode/lepture
 - Thomas Waldmann, @ThomasJWaldmann, github/ThomasWaldmann, freenode/ThomasWaldmann
+- Daniel Neuhäuser, @DasIch, github/DasIch, freenode/DasIch
