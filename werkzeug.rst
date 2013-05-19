@@ -41,8 +41,6 @@ Unicode vs bytes
 +--------------------+------------------------------------+
 | Response.data      | bytes                              |
 +--------------------+------------------------------------+
-| Response.response  | untouched, same types as given     |
-+--------------------+------------------------------------+
 | URI/IRI            | URIs as native strings, IRIs as    |
 |                    | unicode strings, all URI/IRI       |
 |                    | functions accept both              |
