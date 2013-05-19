@@ -1,7 +1,7 @@
 General
 =======
 
-`Werkzeug`_'s repo has got a branch called ``sprint-branch``. The port is supposed to only support Py3.3+ and Py2.7+ for now, so we can use ``u""`` and ``b""`` for literals for both 2 and 3. See `PEP 414`_.
+`Werkzeug`_'s repo has got a branch called ``sprint-branch``. The port is supposed to only support Py3.3+ and Py2.6+ for now, so we can use ``u""`` and ``b""`` for literals for both 2 and 3. See `PEP 414`_.
 
 .. _Werkzeug: https://github.com/mitsuhiko/werkzeug
 .. _PEP 414: http://www.python.org/dev/peps/pep-0414/
