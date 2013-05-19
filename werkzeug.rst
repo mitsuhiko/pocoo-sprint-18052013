@@ -30,7 +30,7 @@ gotchas
   >>> str(b'foobar')  # gives us the repr of the bytestring!
   "b'foobar'"
 
-- The ``bytes`` type in Python 3 behaves completely different than the ``bytes`` (`` = str``) in Python 2.
+- The ``bytes`` type in Python 3 behaves completely different than the ``bytes`` ( `` = str`` ) in Python 2.
 
   For example, iteration:
 
