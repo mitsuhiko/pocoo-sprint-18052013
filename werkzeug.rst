@@ -82,6 +82,17 @@ Headers
     is a `LinkedHeaders` which does the encode/decode as necessary on
     every single access.
 
+Keys
+````
+
+-   keys in dictionaries are currently usually bytestrings in 2.x and
+    sometimes unicode.
+-   With the new rule it's:
+
+    -   native strings on 3.x
+    -   native strings in 2.x if ascii only
+    -   unicode strings in 2.x if non ascii
+
 URIs / IRIs
 ```````````
 
