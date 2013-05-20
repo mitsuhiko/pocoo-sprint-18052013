@@ -1,25 +1,10 @@
-Sprint notes: https://gist.github.com/mitsuhiko/5583127
-
 General
 =======
 
-This text aims to document the ***official*** ongoing process of porting Werkzeug_ to Python 3. The primary repository for this is located at `RonnyPfannschmidt/werkzeug`_, the following branches are relevant to the port:
+`Werkzeug`_'s repo has got a branch called ``sprint-branch``. The port is supposed to only support Py3.3+ and Py2.6+ for now, so we can use ``u""`` and ``b""`` for literals for both 2 and 3. See `PEP 414`_.
 
-`python3-urllib` contains the most recent commits.
-
-The port is supposed to only support Py3.3+ and Py2.7+ for now, so we can use ``u""`` and ``b""`` for literals for both 2 and 3. See `PEP 414`_.
-
-.. _Werkzeug: http://werkzeug.pocoo.org/
-.. _RonnyPfannschmidt/werkzeug: https://github.com/RonnyPfannschmidt/werkzeug
+.. _Werkzeug: https://github.com/mitsuhiko/werkzeug
 .. _PEP 414: http://www.python.org/dev/peps/pep-0414/
-
-
-Why another one? There are already finished ones out there!
------------------------------------------------------------
-
-It's hard to argue against something that is already working in practice. Yet we already found some parts of Werkzeug which should, in our opinion, be rewritten more radically (with API breakage), in order to adapt to the changes in Python 3. That surely means this port is going to take longer to finish, but that doesn't bother us.
-
-A validation of this idea is that Jinja will have to be ported for a second time, because 2to3 turned out to be an impractical solution. That's why we think it'd be a good idea to get it right the first time.
 
 
 gotchas
@@ -30,7 +15,7 @@ gotchas
   >>> str(b'foobar')  # gives us the repr of the bytestring!
   "b'foobar'"
 
-- The ``bytes`` type in Python 3 behaves completely different than the ``bytes`` (`` = str``) in Python 2.
+- The ``bytes`` type in Python 3 behaves completely different than the ``bytes`` (alias to ``str``) in Python 2.
 
   For example, iteration:
 
@@ -41,6 +26,26 @@ gotchas
   [102, 111, 111, 98, 97, 114]
 
   In ``werkzeug._urlparse`` there's an undocumented function called ``_iter_bytestring``, if it turns out to be needed in other modules feel free to move it to ``_compat``.
+
+Unicode vs bytes
+================
+
++--------------------+------------------------------------+
+| Area               | Decision                           |
++====================+====================================+
+| Headers            | always unicode                     |
++--------------------+------------------------------------+
+| Cookies            | always unicode, because of Headers |
++--------------------+------------------------------------+
+| environ            | native strings                     |
++--------------------+------------------------------------+
+| Response.data      | bytes                              |
++--------------------+------------------------------------+
+| URI/IRI            | URIs as native strings, IRIs as    |
+|                    | unicode strings, all URI/IRI       |
+|                    | functions accept both              |
++--------------------+------------------------------------+
+
 
 Submodules and -packages
 ========================

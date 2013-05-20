@@ -16,3 +16,4 @@ Add yourself in a pull request if you participate:
 - Mathias Köhler, @interru, github/interru, freenode/interru
 - Sharoon Thomas, @sharoonthomas, github/sharoonthomas, freenode/sharoonthomas
 - Adrian Mönnich, @thiefmaster, github/ThiefMaster, freenode/ThiefMaster
+- Ronny Pfannschmidt, @ronnypfannsch, github/RonnyPfannschmidt, freenode/ronny
